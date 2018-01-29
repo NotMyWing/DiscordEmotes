@@ -87,6 +87,6 @@ $RECYCLE.BIN/
 # Whole images directory
 images
 
-# Ignore starters
-discordemotes-start.bat
-discordemotes-start.sh
+# Ignore scripts and bats
+*.bat
+*.sh
