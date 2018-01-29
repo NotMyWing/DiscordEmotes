@@ -64,15 +64,31 @@ function startBot(token) {
     bot.on('message', (msg) => {
         // Create message parsing regular expression.
         var message_regex = /^\[(.+?)\]$/,
+            partial_regex = /\[(.+?)\]\s*$/,
             match;
 
-        // If message author is us, and message parses successfully...
-        if (msg.author == bot.user && (match = message_regex.exec(msg.content))) {
+        // If message author is us...
+        if (msg.author == bot.user) {
             INFO("Got an emote message!");
 
-            // Remove emote message itself, without awaiting the Promise.
-            if (msg.deletable)
-                msg.delete();
+            // If it matches fully, then remove the whole message.
+            if (match = message_regex.exec(msg.content)) {
+                // ...without awaiting the Promise.
+                if (msg.deletable)
+                    msg.delete();
+            }
+            // Else match message tail.
+            else if (match = partial_regex.exec(msg.content)) {
+                if (msg.editable) {
+                    var new_content = msg.content.replace(partial_regex, "");
+                    // Edit without awaiting the Promise
+                    msg.edit(new_content);
+                }
+            }
+            // If that fails too, then bail out silently.
+            else {
+                return;
+            }
 
             // Split message into separate emoticons by ',' symbol.
             var emoticons = [],
