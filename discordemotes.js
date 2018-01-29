@@ -69,7 +69,6 @@ function startBot(token) {
 
         // If message author is us...
         if (msg.author == bot.user) {
-            INFO("Got an emote message!");
 
             // If it matches fully, then remove the whole message.
             if (match = message_regex.exec(msg.content)) {
@@ -89,6 +88,7 @@ function startBot(token) {
             else {
                 return;
             }
+            INFO("Got an emote message!");
 
             // Split message into separate emoticons by ',' symbol.
             var emoticons = [],
