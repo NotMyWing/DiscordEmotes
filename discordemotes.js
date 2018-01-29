@@ -90,24 +90,36 @@ function startBot(token) {
                     var directory = ARGV['imagePath'];
 
                     // Add trailing slash if it's missing.
-                    if (!directory.endsWith('/') || !directory.endsWith('\\'))
+                    if (!directory.endsWith('/') && !directory.endsWith('\\'))
                         directory += "/";
 
-
-                    var path = directory + emote;
+                    var search_path = directory + emote;
 
                     // Search for picture using every supported extension.
                     var success = IMAGE_EXTENSIONS.some((ext) => {
-                        var path = path + ext;
-                        if (fs.existsSync(path))
+                        var path = search_path + ext;
+                        if (fs.existsSync(path)) {
                             emoticons.push(path)
+                            return true;
+                        }
                     });
 
                     // If not found, then notify.
                     if (!success) {
                         ERROR("No picture found for " + emote.red + "!");
+
+                        if (!ARGV["notFoundSkip"]) {
+                            ERROR("Bailing out. (!notFoundSkip)");
+                            return;
+                        }
                     }
                 }
+            }
+
+            // Bail if there's no emoticons at all.
+            if (emoticons.length == 0 || emoticons.every((x) => !x)) {
+                ERROR("No emoticons were included in message!");
+                return;
             }
 
             var promises = [];
@@ -179,7 +191,13 @@ function startBot(token) {
                         .png()
                         .toBuffer()
                         .then((buffer) => {
-                            msg.channel.sendFile(buffer, "image.png");
+                            msg.channel.send(new Discord.Attachment(buffer, "image.png"))
+                                .then((x) => {
+                                    INFO("✦ Emotes sent with success! ✦");
+                                })
+                                .catch((x) => {
+                                    ERROR("Couldn't send emotes. " + x);
+                                });
                         });
                 });
             });
