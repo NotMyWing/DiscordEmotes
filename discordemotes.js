@@ -104,6 +104,12 @@ function startBot(token) {
                 // Else push emote path.
                 else {
                     var directory = ARGV['imagePath'];
+                    var options = {};
+
+                    if (emote.startsWith("!")) {
+                        options.flip = true;
+                        emote = emote.substr(1);
+                    }
 
                     // Add trailing slash if it's missing.
                     if (!directory.endsWith('/') && !directory.endsWith('\\'))
@@ -115,7 +121,10 @@ function startBot(token) {
                     var success = IMAGE_EXTENSIONS.some((ext) => {
                         var path = search_path + ext;
                         if (fs.existsSync(path)) {
-                            emoticons.push(path)
+                            emoticons.push({
+                                path: path,
+                                options: options
+                            })
                             return true;
                         }
                     });
@@ -124,7 +133,7 @@ function startBot(token) {
                     if (!success) {
                         ERROR("No picture found for " + emote.red + "!");
 
-                        if (!ARGV["notFoundSkip"]) {
+                        if (ARGV["notFoundSkip"] === "false") {
                             ERROR("Bailing out. (!notFoundSkip)");
                             return;
                         }
@@ -156,10 +165,13 @@ function startBot(token) {
 
                     // Otherwise, load it from disk and resize to max
                     else {
-                        img = sharp(emoticons[i])
+                        img = sharp(emoticons[i].path)
                             .resize(ARGV['emoteSize'], ARGV['emoteSize'])
                             .background({ r: 0, g: 0, b: 0, alpha: 0 })
                             .embed();
+
+                        if (emoticons[i].options.flip)
+                            img.flop();
                     }
 
                     // Resolve promise with PNG data.
