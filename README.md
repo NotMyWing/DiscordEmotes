@@ -28,6 +28,7 @@ The most awful way of posting your custom emotes without having Discord Nitro!
        For example, `[your_folder/your_emote]`.
      * You can even chain emotes. Try `[your_emote, another_emote, third_emote]`!
      * You also can add a whitespace between emotes by typing `[emote,,emote]`.
+     * Did I mention flopping? Try adding ! before emote to flop it. For instance, `[!emote]`.
 
 Supported extensions are:
 - .jpeg
