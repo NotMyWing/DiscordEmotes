@@ -27,18 +27,18 @@ The most awful way of posting your custom emotes without having Discord Nitro!
      * File names should be lowercase.
 2. Type `[your_emote]` in Discord. It must be either in the end of your message, or in separate one.
 
-## Tips and syntx
+## Tips and syntax
 
 * File extension is not needed.
   * `[your_emote]`
 * Emotes can be put into nested folders. You need to include that folder when using emote.
-  * `[your_folder/your_emote]`.
+  * `[your_folder/your_emote]`
 * Emotes can be chained using comma separator. Spaces are trimmed.
-  * `[your_emote, another_emote, third_emote]`!
+  * `[your_emote, another_emote, third_emote]`
 * Empty emotes can be added by whitespace between commas, acting as empty emote.
-  * `[emote,,emote,,emote]`.
+  * `[emote,,emote,,emote]`
 * Emotes can be flopped (rotated around X-axis) using `!` prefix before emote. 
-  * `[!emote]`.
+  * `[!emote]`
 * Try running script with `--help` key to see additional command line arguments.
 
 ## Supported extensions
