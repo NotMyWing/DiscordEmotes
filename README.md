@@ -25,7 +25,7 @@ The most awful way of posting your custom emotes without having Discord Nitro!
 
 1. Create `images` folder in script directory and throw any images of your liking there.
      * File names should be lowercase.
-2. Type `[your_emote]` in Discord. It must be in the end of your message, or in separate one.
+2. Type `[your_emote]` in Discord. It must be either in the end of your message, or in separate one.
 
 ## Tips and syntx
 
