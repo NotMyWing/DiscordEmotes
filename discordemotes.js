@@ -37,6 +37,7 @@ const ERROR = (...args) => { console.log(dateformat(new Date(), "[HH:MM:ss]").re
 // Awful constants
 const COLOR_TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 const IMAGE_EXTENSIONS = [
+    '',
     '.jpeg',
     '.jpg',
     '.png',
