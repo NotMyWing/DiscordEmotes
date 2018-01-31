@@ -39,6 +39,8 @@ The most awful way of posting your custom emotes without having Discord Nitro!
   * `[emote,,emote,,emote]`
 * Emotes can be flopped (rotated around X-axis) using `!` prefix before emote. 
   * `[!emote]`
+* Emotes preceeded by `?` prefix are sent in full resolution, retaining GIF animation frames. These emotes can be chained; each picture will be sent separately.
+  * `[?emote, ?emote]`
 * Try running script with `--help` key to see additional command line arguments.
 
 ## Supported extensions
@@ -52,6 +54,7 @@ Next extensions are supported by Sharp
 - .svg
 
 Please note that some file formats may not support transparency.
+GIF animation frames are stripped if sent without `?` prefix.
 
 # How do I contact you?
 * Discord: Neeve#9079.
