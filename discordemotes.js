@@ -155,7 +155,7 @@ function startBot(token) {
             }
 
             // Handle single full-sized emotes if there's any
-            if (emoticons.some((x) => x.options.single)) {
+            if (emoticons.some((x) => x && x.options && x.options.single)) {
                 // Create array of full-sized emotes and remove them from original array
                 var singles = emoticons.filter((x) => x.options.single),
                     emoticons = emoticons.filter((x) => !x.options.single);

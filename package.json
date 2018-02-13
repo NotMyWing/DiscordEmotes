@@ -1,7 +1,7 @@
 {
     "name": "discordemotes",
     "version": "1.0.0",
-    "description": "Discord emote selfbot",
+    "description": "DiscordEmotes selfbot",
     "main": "discordemotes.js",
     "dependencies": {
         "bufferutil": "^3.0.3",
