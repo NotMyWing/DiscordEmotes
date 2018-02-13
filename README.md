@@ -1,4 +1,7 @@
 # DiscordEmotes!!!!!!!!!!!!!!
+
+![](https://i.imgur.com/yWl04w0.gif)
+
 The most awful way of posting your custom emotes without having Discord Nitro!
 
 # How do I install?
@@ -11,7 +14,7 @@ The most awful way of posting your custom emotes without having Discord Nitro!
 ## Install Node.JS and Sharp prerequisites
 
 * [Node.JS](https://nodejs.org/en/download/)
-* [Sharp Prerequsites](http://sharp.dimens.io/en/stable/install/)
+* [Sharp Prerequisites](http://sharp.dimens.io/en/stable/install/)
 
 ## Install the script itself
 
@@ -25,11 +28,11 @@ The most awful way of posting your custom emotes without having Discord Nitro!
 
 1. Create `images` folder in script directory and throw any images of your liking there.
      * File names should be lowercase.
-2. Type `[your_emote]` in Discord. It must be either in the end of your message, or in separate one.
+2. Type `[your_emote]` in Discord. It must be either in the end of your message, or in the separate one.
 
 ## Tips and syntax
 
-* File extension is not needed.
+* File extension is optional.
   * `[your_emote]`
 * Emotes can be put into nested folders. You need to include that folder when using emote.
   * `[your_folder/your_emote]`
